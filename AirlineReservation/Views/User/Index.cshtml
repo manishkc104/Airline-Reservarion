@@ -1,0 +1,109 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Entities.tblUserInformation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page">
+    <div class="page-content d-flex align-items-stretch">
+        <div class="col-lg-12">
+            <section class="tables">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header d-flex align-items-center">
+                                    <h3 class="h4">@Html.ActionLink("Add New User", "Create")</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+
+                                                <tr>
+                                                    <th>
+                                                        FirstName
+                                                    </th>
+                                                    <th>
+                                                        LastName
+                                                    </th>
+                                                    <th>
+                                                        Email
+                                                    </th>
+
+                                                    <th>
+                                                        PhoneNo
+                                                    </th>
+                                                    <th>
+                                                        Address
+                                                    </th>
+                                                    <th>
+                                                        PostalCode
+                                                    </th>
+
+                                                    @*<th>
+                                                            UserRole
+                                                        </th>*@
+                                                    <th>
+                                                        Action
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (Entities.tblUserInformation item in Model)
+                                                {
+                                                    //var item = Model.ToList()[i];
+                                                    <tr>
+                                                        <td>
+                                                            @*@Html.DisplayFor(modelItem => item.FirstName)*@
+                                                            @item.FirstName
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.LastName)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Email)
+                                                        </td>
+
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PhoneNo)
+                                                        </td>
+                                                        <td>
+                                                            @{
+                                                                var FullAddress = item.Address + "," + item.City + "," + item.Country;
+                                                                @Html.DisplayFor(m => FullAddress)
+                                                            }
+
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.PostalCode)
+                                                        </td>
+
+                                                        @*<td>
+                                                                @Html.DisplayFor(modelItem => item.tblUserType.UserRole)
+                                                            </td>*@
+                                                        <td>
+                                                            <a href='@Url.Action("Edit", "User" , new { id = item.ID })' class="btn btn-info">Edit</a>
+                                                            <a href='@Url.Action("Delete", "User" , new { id = item.ID })' class="btn btn-danger">Delete</a>
+
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+

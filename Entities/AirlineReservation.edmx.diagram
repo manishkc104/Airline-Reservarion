@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fa659694392d4c809e84b23717088521" Name="Diagram1">
+        <EntityTypeShape EntityType="AirlineReservationModel.sysdiagram" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblClass" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblFare" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblFlight" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblFlightBook" Width="1.5" PointX="6" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblFlightBookDetail" Width="1.5" PointX="8.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblFlightSchedule" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblFlightSeat" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblFrequentFlightSchedule" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblPassengerDetail" Width="1.5" PointX="10.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblPassengerType" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblRoute" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblTripType" Width="1.5" PointX="3.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblUserInformation" Width="1.5" PointX="11" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirlineReservationModel.tblUserType" Width="1.5" PointX="8.75" PointY="10" IsExpanded="true" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblFare_tblClass" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblFlightBookDetail_tblClass" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblFlightSeats_tblClass" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblFare_tblFlight" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblFare_tblPassengerType" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblFare_tblRoute" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblFlightSchedule_tblFlight" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblFlightSeats_tblFlight" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblFlightBook_tblTripType" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblFlightBookDetail_tblFlightBook" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblFlightBookDetail_tblFlightSchedule" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblPassengerDetail_tblFlightBookDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblFlightSchedule_tblRoute" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblUserInformation_tblUserType" ManuallyRouted="false" />
+        <AssociationConnector Association="AirlineReservationModel.FK_tblPassengerDetail_tblFlightBookDetail1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

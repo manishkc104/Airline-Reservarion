@@ -1,0 +1,64 @@
+﻿@model List<AirlineReservation.Models.BackOffice.AdminBookingModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Booking</h2>
+
+<div class="page">
+    <div class="page-content d-flex align-items-stretch">
+        <div class="col-lg-12">
+            <section class="tables">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+
+                                                <tr>
+                                                    <th>
+                                                        User Name
+                                                    </th>
+                                                    <th>
+                                                        Booking Date
+                                                    </th>
+                                                    <th>
+                                                        Action
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <tr>
+                                                        <td>
+                                                            @item.UserName
+                                                        </td>
+                                                        <td>
+                                                            @item.BookingDate
+                                                        </td>
+                                                        <td>
+                                                            <a href='@Url.Action("FlightTicket", "SearchFlight" , new { bookId = item.BookId })' class="btn btn-info">View Detail</a>
+                                                            <a href='@Url.Action("Delete", "Booking" , new { bookId = item.BookId })' onclick="return Confirm('Are you sure you want to cancel Booking?');" class="btn btn-danger">Delete</a>
+
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+

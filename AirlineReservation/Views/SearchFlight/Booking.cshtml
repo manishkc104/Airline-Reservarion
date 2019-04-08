@@ -1,0 +1,263 @@
+﻿@model AirlineReservation.Models.BookFlightViewModel
+@{
+    ViewBag.Title = "Booking";
+    Layout = "~/Views/Shared/_LayoutBooking.cshtml";
+}
+<section class="filter-page">
+    <div class="container">
+        <div class="row">
+            @using (Html.BeginForm("Booking", "SearchFlight", FormMethod.Post, new { id = "frmCreate", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.ID)
+                @Html.HiddenFor(m => m.FlightType)
+                @Html.HiddenFor(m => m.Adult)
+                @Html.HiddenFor(m => m.Child)
+                @Html.HiddenFor(m => m.DepartureFlight)
+                @Html.HiddenFor(m => m.DepartureFlightClass)
+                @Html.HiddenFor(m => m.ReturnFlight)
+                @Html.HiddenFor(m => m.ReturnFlightClass)
+                @Html.HiddenFor(m => m.jsonPassengerDetail)
+                <div class="mytripcontent">
+                    <h1>Domestic Flights in Nepal</h1>
+                    Mytrip2nepal.com is the first and largest travel portal in Nepal to introduce Nepal Domestic Airlines online bookings. We are the largest stock holders of domestic airlines in Nepal. We are the top 10 agents in terms of selling tickets with Buddha Airlines and Yeti Airlines. We do offer cheap flight tickets across different sectors in Nepal.
+                </div>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="form-area" style="width:100%; display:inline-block;">
+                            <br style="clear:both">
+                            <h5 style="margin-bottom: 25px; text-align: center;">Book</h5>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "First Name" })
+                                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "Last Name" })
+                                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Phone No.</label>
+                                    @Html.TextBoxFor(m => m.PhoneNo, new { @class = "form-control", @placeholder = "Phone No." })
+                                    @Html.ValidationMessageFor(model => model.PhoneNo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>City</label>
+                                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Address" })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>City</label>
+                                    @Html.TextBoxFor(m => m.City, new { @class = "form-control", @placeholder = "City" })
+                                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    @Html.TextBoxFor(m => m.Country, new { @class = "form-control", @placeholder = "Country" })
+                                    @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Postal Code</label>
+                                    @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control", @placeholder = "Postal Code" })
+                                    @Html.ValidationMessageFor(model => model.PostalCode, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mytripcontent">
+                    <h1>Domestic Flights in Nepal</h1>
+                    Mytrip2nepal.com is the first and largest travel portal in Nepal to introduce Nepal Domestic Airlines online bookings. We are the largest stock holders of domestic airlines in Nepal. We are the top 10 agents in terms of selling tickets with Buddha Airlines and Yeti Airlines. We do offer cheap flight tickets across different sectors in Nepal.
+                </div>
+                <div class="col-md-12">
+                    <div class="awe-search-tabs tabs" style="margin-top:30px;">
+                        <ul>
+                            @{
+                                for (int adultIndex = 1; adultIndex <= (string.IsNullOrEmpty(Model.Adult) ? 0 : Convert.ToInt32(Model.Adult)); adultIndex++)
+                                {
+                                    <li>
+                                        <a href="#adult@(adultIndex)">
+                                            <i class="awe-icon awe-icon-plane"></i>
+                                        </a>
+                                    </li>
+                                }
+                                for (int childIndex = 1; childIndex <= (string.IsNullOrEmpty(Model.Child) ? 0 : Convert.ToInt32(Model.Child)); childIndex++)
+                                {
+                                    <li>
+                                        <a href="#child@(childIndex)">
+                                            <i class="awe-icon awe-icon-hotel"></i>
+                                        </a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                        <div class="awe-search-tabs__content tabs__content">
+                            @{
+                                for (int adultIndex = 1; adultIndex <= (string.IsNullOrEmpty(Model.Adult) ? 0 : Convert.ToInt32(Model.Adult)); adultIndex++)
+                                {
+                                    <div id="adult@(adultIndex)" class="search-flight adult" style="display:inline-block">
+                                        <br style="clear:both">
+                                        <h5 style="margin-bottom: 25px; text-align: center;">Adult</h5>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>First Name</label>
+                                                <input type="text" class="form-control firstname" placeholder="First Name" required autocomplete="off">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Last Name</label>
+                                                <input type="text" class="form-control lastname" placeholder="Last Name" required autocomplete="off">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Gender</label>
+                                                <input type="text" class="form-control gender" placeholder="Gender" required autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Phone Number</label>
+                                                <input type="text" class="form-control phonenumber" placeholder="Phone Number" required autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <input type="text" class="form-control address" placeholder="Address" required autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                for (int childIndex = 1; childIndex <= (string.IsNullOrEmpty(Model.Child) ? 0 : Convert.ToInt32(Model.Child)); childIndex++)
+                                {
+                                    <div id="child@(childIndex)" class="search-flight children" style="display:inline-block">
+                                        <br style="clear:both">
+                                        <h5 style="margin-bottom: 25px; text-align: center;">Children</h5>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>First Name</label>
+                                                <input type="text" class="form-control firstname" placeholder="First Name" required autocomplete="off">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Last Name</label>
+                                                <input type="text" class="form-control lastname" placeholder="Last Name" required autocomplete="off">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Gender</label>
+                                                <input type="text" class="form-control gender" placeholder="Gender" required autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Phone Number</label>
+                                                <input type="text" class="form-control phonenumber" placeholder="Phone Number" required autocomplete="off">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Address</label>
+                                                <input type="text" class="form-control address" placeholder="Address" required autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    @{ 
+                        var adult = (string.IsNullOrEmpty(Model.Adult) ? 0 : Convert.ToInt32(Model.Adult));
+                        var departureadultfare = (string.IsNullOrEmpty(Model.DepartureAdultFare) ? 0 : Convert.ToInt32(Model.DepartureAdultFare));
+                        var returnadultfare = (string.IsNullOrEmpty(Model.ReturnAdultFare) ? 0 : Convert.ToInt32(Model.ReturnAdultFare));
+
+
+                        var child = (string.IsNullOrEmpty(Model.Child) ? 0 : Convert.ToInt32(Model.Child));
+                        var departurechildfare = (string.IsNullOrEmpty(Model.DepartureChildFare) ? 0 : Convert.ToInt32(Model.DepartureChildFare));
+                        var returnchildfare = (string.IsNullOrEmpty(Model.ReturnChildFare) ? 0 : Convert.ToInt32(Model.ReturnChildFare));
+                    }
+                    <div>Total Adult Fare: @((adult * departureadultfare) + (adult * returnadultfare))</div>
+                    <div>Total Child Fare: @((child * departurechildfare) + (child * returnchildfare))</div>
+                    <button type="submit" id="book" onclick="Javascript: SetPassengerDetail();" class="btn btn-primary pull-right" style="margin-top:80px;">Book</button>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+<script>
+    function SetPassengerDetail() {
+        // $('#jsonPassengerDetail').val('testdata');
+        var passengerArray = new Array();
+        $('.adult').each(function (i) {
+            var firstname = $(this).find('.firstname').val();
+            var lastname = $(this).find('.lastname').val();
+            var gender = $(this).find('.gender').val();
+            var phoneno = $(this).find('.phonenumber').val();
+            var address = $(this).find('.address').val();
+            var passengerdetail = new Object();
+            passengerdetail.PassengerType = '2';
+            passengerdetail.FirstName = firstname;
+            passengerdetail.LastName = lastname;
+            passengerdetail.Gender = gender;
+            passengerdetail.Phone = phoneno;
+            passengerdetail.Address = address;
+            passengerArray.push(passengerdetail);
+        })
+        $('.children').each(function (i) {
+            var firstname = $(this).find('.firstname').val();
+            var lastname = $(this).find('.lastname').val();
+            var gender = $(this).find('.gender').val();
+            var phoneno = $(this).find('.phonenumber').val();
+            var address = $(this).find('.address').val();
+            var passengerdetail = new Object();
+            passengerdetail.PassengerType = '1';
+            passengerdetail.FirstName = firstname;
+            passengerdetail.LastName = lastname;
+            passengerdetail.Gender = gender;
+            passengerdetail.Phone = phoneno;
+            passengerdetail.Address = address;
+            passengerArray.push(passengerdetail);
+        })
+
+        $('#jsonPassengerDetail').val(JSON.stringify(passengerArray));
+    }
+</script>

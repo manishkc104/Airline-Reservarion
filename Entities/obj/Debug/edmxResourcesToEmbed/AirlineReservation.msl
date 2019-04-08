@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AirlineReservationModelStoreContainer" CdmEntityContainer="AirlineReservationEntities">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="AirlineReservationModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblClasses">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblClass">
+        <MappingFragment StoreEntitySet="tblClass">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFares">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblFare">
+        <MappingFragment StoreEntitySet="tblFare">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FlightID" ColumnName="FlightID" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="PassengerTypeID" ColumnName="PassengerTypeID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="AllowedBaggage" ColumnName="AllowedBaggage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFlights">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblFlight">
+        <MappingFragment StoreEntitySet="tblFlight">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FlightNo" ColumnName="FlightNo" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="FlightLogo" ColumnName="FlightLogo" />
+          <ScalarProperty Name="FlightName" ColumnName="FlightName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFlightBooks">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblFlightBook">
+        <MappingFragment StoreEntitySet="tblFlightBook">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="TripTypeID" ColumnName="TripTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFlightBookDetails">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblFlightBookDetail">
+        <MappingFragment StoreEntitySet="tblFlightBookDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="FlightScheduleID" ColumnName="FlightScheduleID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="BookingDate" ColumnName="BookingDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFlightSchedules">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblFlightSchedule">
+        <MappingFragment StoreEntitySet="tblFlightSchedule">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FlightID" ColumnName="FlightID" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="DepartureDateTime" ColumnName="DepartureDateTime" />
+          <ScalarProperty Name="ArrivalDateTime" ColumnName="ArrivalDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFlightSeats">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblFlightSeat">
+        <MappingFragment StoreEntitySet="tblFlightSeats">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FlightID" ColumnName="FlightID" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="NoOfSeat" ColumnName="NoOfSeat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblFrequentFlightSchedules">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblFrequentFlightSchedule">
+        <MappingFragment StoreEntitySet="tblFrequentFlightSchedule">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FlightID" ColumnName="FlightID" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="DepartureTime" ColumnName="DepartureTime" />
+          <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+          <ScalarProperty Name="FlightFrequency" ColumnName="FlightFrequency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPassengerDetails">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblPassengerDetail">
+        <MappingFragment StoreEntitySet="tblPassengerDetail">
+          <ScalarProperty Name="PassengerType" ColumnName="PassengerType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BookFlightID" ColumnName="BookFlightID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPassengerTypes">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblPassengerType">
+        <MappingFragment StoreEntitySet="tblPassengerType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PassengerType" ColumnName="PassengerType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRoutes">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblRoute">
+        <MappingFragment StoreEntitySet="tblRoute">
+          <ScalarProperty Name="ArrivalShort" ColumnName="ArrivalShort" />
+          <ScalarProperty Name="DepartureShort" ColumnName="DepartureShort" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Departure" ColumnName="Departure" />
+          <ScalarProperty Name="Arrival" ColumnName="Arrival" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTripTypes">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblTripType">
+        <MappingFragment StoreEntitySet="tblTripType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TripType" ColumnName="TripType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUserInformations">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblUserInformation">
+        <MappingFragment StoreEntitySet="tblUserInformation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUserTypes">
+      <EntityTypeMapping TypeName="AirlineReservationModel.tblUserType">
+        <MappingFragment StoreEntitySet="tblUserType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

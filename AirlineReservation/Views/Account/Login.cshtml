@@ -1,0 +1,33 @@
+﻿@model AirlineReservation.Models.LoginViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+
+<div class="login-page">
+    <div class="form">
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "login-form" }))
+    {
+
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+        <button>login</button>
+        <p class="message"><a href="~/RegisterUser/Create">Don't have account? Register</a></p>
+        <p class="message"><a href="~/Account/TroubleLogin">Trouble Logging in?</a></p>
+}
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

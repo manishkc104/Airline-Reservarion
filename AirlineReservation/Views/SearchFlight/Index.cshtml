@@ -1,0 +1,351 @@
+﻿@model AirlineReservation.Models.SearchFlightViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
+}
+
+<!-- HEADING PAGE -->
+<section class="awe-parallax category-heading-section-demo">
+    <div class="awe-overlay"></div>
+    <div class="container">
+        <div class="category-heading-content category-heading-content__2 text-uppercase">
+            <!-- BREADCRUMB -->
+            <div class="breadcrumb">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><span>Flight</span></li>
+                </ul>
+            </div>
+            <!-- BREADCRUMB -->
+            <div class="find">
+                <h2 class="text-center">Find Your Flight</h2>
+                @using (Html.BeginForm("Index", "SearchFlight", FormMethod.Post, new { @class = "login-form" }))
+                {
+                    <div class="form-group">
+                        <div class="form-elements">
+                            <label>From</label>
+                            <div class="form-item">
+                                <i class="awe-icon awe-icon-marker-1"></i>
+                                @Html.TextBoxFor(m => m.From, new { @required = "true" })
+                            </div>
+                        </div>
+                        <div class="form-elements">
+                            <label>To</label>
+                            <div class="form-item">
+                                <i class="awe-icon awe-icon-marker-1"></i>
+                                @Html.TextBoxFor(m => m.To, new { @required = "true" })
+                            </div>
+                        </div>
+
+                        <div class="form-elements">
+                            <label>Adult</label>
+                            <div class="form-item">
+                                @{
+                                    List<SelectListItem> AdultItem = new List<SelectListItem>();
+                                    for (int adultindex = 1; adultindex <= 10; adultindex++)
+                                    {
+                                        AdultItem.Add(new SelectListItem { Value = adultindex.ToString(), Text = adultindex.ToString() });
+                                    }
+
+                                }
+                                @Html.DropDownListFor(m => m.Adult, AdultItem, "Select..", new { @required = "true" })
+                            </div>
+                        </div>
+
+                        <div class="form-elements">
+                            <label>Child</label>
+                            <div class="form-item">
+                                @{
+                                    List<SelectListItem> ChildItem = new List<SelectListItem>();
+                                    for (int childindex = 1; childindex <= 10; childindex++)
+                                    {
+                                        ChildItem.Add(new SelectListItem { Value = childindex.ToString(), Text = childindex.ToString() });
+                                    }
+                                }
+                                @Html.DropDownListFor(m => m.Child, ChildItem, "Select..")
+                            </div>
+                        </div>
+                        <div class="form-elements" style="margin-top:10px;">
+                            <label>Trip</label>
+                            <div class="form-item" style="padding-right:0px;">
+                                @{
+                                    List<SelectListItem> items = new List<SelectListItem>();
+                                    items.Add(new SelectListItem { Value = "1", Text = "One Way" });
+                                    items.Add(new SelectListItem { Value = "2", Text = "Round Trip" });
+                                }
+                                @Html.DropDownListFor(m => m.FlightType, items, "Select..", new { @required = "true" })
+                            </div>
+                        </div>
+                        <div class="form-elements" style="padding-left:40px;margin-top:10px;">
+                            <label>Depart on</label>
+                            <div class="form-item">
+                                <i class="awe-icon awe-icon-calendar"></i>
+                                @Html.TextBoxFor(m => m.Depart,"{0:MM/dd/yyyy}", new { @class = "awe-calendar", @placeholder = "Date", @required = "true" })
+                            </div>
+                        </div>
+                        <div class="form-elements" id="fldReturn" style="padding-left:80px;margin-top:10px;">
+                            <label>Return on</label>
+                            <div class="form-item">
+                                <i class="awe-icon awe-icon-calendar"></i>
+                                @Html.TextBoxFor(m => m.Return, "{0:MM/dd/yyyy}", new { @class = "awe-calendar", @placeholder = "Date" })
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <input type="submit" value="Find My Flight">
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END / HEADING PAGE -->
+
+
+<section class="filter-page">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="mytripcontent">
+                <h1>Domestic Flights in Nepal</h1>
+                Airline reservation is upcoming largest travel portal in Nepal to introduce Nepal Domestic Airlines online bookings. We plan to become the largest stock holders of domestic airlines in Nepal.
+            </div>
+            <div class="col-md-12">
+                <div>Departure Flights</div>
+                <div class="filter-page__content">
+                    <div class="filter-item-wrapper">
+                        @foreach (var flightinfo in Model.departFlightDetail)
+                        {
+
+                            <!-- ITEM -->
+                            <div class="flight-item">
+                                <div class="item-media">
+                                    <div class="image-cover">
+                                        <img style="height:100px;width:100px;" src="/FlightImages/@flightinfo.FlightLogo" alt="">
+                                    </div>
+                                </div>
+                                <div class="item-body">
+                                    <div class="item-title">
+                                        <h2>
+                                            <a href="flight-detail.html">@flightinfo.FlightName</a>
+                                        </h2>
+                                    </div>
+                                    <table class="item-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="route">Route</th>
+                                                <th class="depart">Depart</th>
+                                                <th class="arrive">Arrive</th>
+                                                <th class="duration">Duration</th>
+                                                <th class="AllowedBaggage">Allowed Baggage</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="route">
+                                                    <ul>
+                                                        <li>@flightinfo.From <i class="awe-icon awe-icon-arrow-right"></i></li>
+                                                        <li>@flightinfo.To <i class="awe-icon awe-icon-arrow-right"></i></li>
+                                                    </ul>
+                                                </td>
+                                                <td class="depart">
+                                                    <span>@flightinfo.Depart.ToString("HH:mm")</span>
+                                                    <span class="date">@flightinfo.Depart.ToShortDateString()</span>
+                                                </td>
+                                                <td class="arrive">
+                                                    <span>@flightinfo.Arrive.ToString("HH:mm")</span>
+                                                </td>
+                                                <td class="duration">
+                                                    @{
+                                                        var duration = (flightinfo.Arrive - flightinfo.Depart);
+                                                    }
+                                                    <span>@(duration.Hours.ToString() + ":" + duration.Minutes.ToString())</span>
+                                                </td>
+                                                <td class="AllowedBaggage">
+                                                    <span>@(flightinfo.AllowedBaggage) KG</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="route">
+                                                    Class: @(flightinfo.Class)
+                                                </td>
+                                                <td class="depart">
+                                                    Adult Fare: RS @flightinfo.Fare
+                                                </td>
+                                                <td class="arrive">
+                                                    Child Fare: RS @flightinfo.ChildFare
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="item-price-more">
+                                    <div>
+                                        <input type="radio" class="DepartureFlight" name="DepartureFlight" data-childfare="@flightinfo.ChildFare" data-adultfare="@flightinfo.Fare" data-classid="@flightinfo.ClassID" value="@flightinfo.FlightScheduleId" />
+                                    </div>
+                                    @*<a href="flight-detail.html" class="awe-btn">Book now</a>*@
+                                </div>
+                            </div>
+                            <!-- END / ITEM -->
+                        }
+                    </div>
+
+
+                    <!-- PAGINATION -->
+                    @*<div class="page__pagination">
+                            <span class="pagination-prev"><i class="fa fa-caret-left"></i></span>
+                            <span class="current">1</span>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#" class="pagination-next"><i class="fa fa-caret-right"></i></a>
+                        </div>*@
+                    <!-- END / PAGINATION -->
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div>Return Flights</div>
+                <div class="filter-page__content">
+                    <div class="filter-item-wrapper">
+                        @foreach (var flightinfo in Model.returnFlightDetail)
+                        {
+
+                            <!-- ITEM -->
+                            <div class="flight-item">
+                                <div class="item-media">
+                                    <div class="image-cover">
+                                        <img style="height:100px;width:100px;" src="/FlightImages/@flightinfo.FlightLogo" alt="">
+                                    </div>
+                                </div>
+                                <div class="item-body">
+                                    <div class="item-title">
+                                        <h2>
+                                            <a href="flight-detail.html">@flightinfo.FlightName</a>
+                                        </h2>
+                                    </div>
+                                    <table class="item-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="route">Route</th>
+                                                <th class="depart">Depart</th>
+                                                <th class="arrive">Arrive</th>
+                                                <th class="duration">Duration</th>
+                                                <th class="AllowedBaggage">Allowed Baggage</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="route">
+                                                    <ul>
+                                                        <li>@flightinfo.From <i class="awe-icon awe-icon-arrow-right"></i></li>
+                                                        <li>@flightinfo.To <i class="awe-icon awe-icon-arrow-right"></i></li>
+                                                    </ul>
+                                                </td>
+                                                <td class="depart">
+                                                    <span>@flightinfo.Depart.ToString("HH:mm")</span>
+                                                    <span class="date">@flightinfo.Depart.ToShortDateString()</span>
+                                                </td>
+                                                <td class="arrive">
+                                                    <span>@flightinfo.Arrive.ToString("HH:mm")</span>
+                                                </td>
+                                                <td class="duration">
+                                                    @{
+                                                        var duration = (flightinfo.Arrive - flightinfo.Depart);
+                                                    }
+                                                    <span>@(duration.Hours.ToString() + ":" + duration.Minutes.ToString())</span>
+                                                </td>
+                                                <td class="AllowedBaggage">
+                                                    <span>@(flightinfo.AllowedBaggage) KG</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="route">
+                                                    Class: @(flightinfo.Class)
+                                                </td>
+                                                <td class="depart">
+                                                    Adult Fare: RS @flightinfo.Fare
+                                                </td>
+                                                <td class="arrive">
+                                                    Child Fare: RS @flightinfo.ChildFare
+                                                </td>
+                                                <td class="duration"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="item-price-more">
+
+                                    <div>
+                                        <input type="radio" class="ReturnFlight" name="ReturnFlight" data-childfare="@flightinfo.ChildFare" data-adultfare="@flightinfo.Fare" data-classid="@flightinfo.ClassID" value="@flightinfo.FlightScheduleId" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END / ITEM -->
+                        }
+                    </div>
+                    <div>
+                        <a href="#" id="lnkBooking" class="btn btn-primary">Next</a>
+                    </div>
+
+
+                    <!-- PAGINATION -->
+                    @*<div class="page__pagination">
+                            <span class="pagination-prev"><i class="fa fa-caret-left"></i></span>
+                            <span class="current">1</span>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <a href="#">4</a>
+                            <a href="#" class="pagination-next"><i class="fa fa-caret-right"></i></a>
+                        </div>*@
+                    <!-- END / PAGINATION -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function (e) {
+        EnableDisableTrip();
+
+        $('#FlightType').change(function (e) {
+            EnableDisableTrip();
+        });
+
+        $('#lnkBooking').click(function (e) {
+            var bookingdetail = new Object();
+            bookingdetail.FlightType = $('#FlightType').val();
+            bookingdetail.Adult = $('#Adult').val();
+            bookingdetail.Child = $('#Child').val();
+            bookingdetail.DepartureAdultFare = $('.DepartureFlight:checked').attr('data-adultfare');
+            bookingdetail.DepartureChildFare = $('.DepartureFlight:checked').attr('data-childfare');
+            bookingdetail.DepartureFlight = $('.DepartureFlight:checked').val();
+            bookingdetail.DepartureFlightClass = $('.DepartureFlight:checked').attr('data-classid');
+            bookingdetail.ReturnAdultFare = $('.ReturnFlight:checked').attr('data-adultfare');
+            bookingdetail.ReturnChildFare = $('.ReturnFlight:checked').attr('data-childfare');
+            bookingdetail.ReturnFlight = $('.ReturnFlight:checked').val();
+            bookingdetail.ReturnFlightClass = $('.ReturnFlight:checked').attr('data-classid');
+
+            //$.post("/SearchFlight/Book", bookingdetail, null )
+
+            var path = '/SearchFlight/Booking?bookingDetail=' + JSON.stringify(bookingdetail);
+            window.location.href = path;
+        });
+    });
+
+    var EnableDisableTrip = function (e) {
+        if ($('#FlightType').val() == "1") {
+            //$('#Return').attr("disabled", "disabled");
+            $("#fldReturn").hide();
+            $('#Return').removeProp("required");
+        }
+        else {
+            //$('#Return').removeAttr("disabled");
+            $("#fldReturn").show();
+            $('#Return').prop('required', true);
+        }
+    };
+</script>
+

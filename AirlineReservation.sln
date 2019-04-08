@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirlineReservation", "AirlineReservation\AirlineReservation.csproj", "{37699E6A-E796-47BD-B3EA-CE9EDF39E988}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{EC90196D-A27E-461A-9B44-166CAF7C296D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37699E6A-E796-47BD-B3EA-CE9EDF39E988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37699E6A-E796-47BD-B3EA-CE9EDF39E988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37699E6A-E796-47BD-B3EA-CE9EDF39E988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37699E6A-E796-47BD-B3EA-CE9EDF39E988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC90196D-A27E-461A-9B44-166CAF7C296D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC90196D-A27E-461A-9B44-166CAF7C296D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC90196D-A27E-461A-9B44-166CAF7C296D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC90196D-A27E-461A-9B44-166CAF7C296D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {760A5C2B-4307-4203-B5EA-213CCED31191}
+	EndGlobalSection
+EndGlobal

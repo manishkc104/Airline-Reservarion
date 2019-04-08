@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirlineReservationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tblClass">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Class" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblFare">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FlightID" Type="int" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="ClassID" Type="int" Nullable="false" />
+    <Property Name="PassengerTypeID" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="AllowedBaggage" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblFlight">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FlightNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Detail" Type="nvarchar(max)" />
+    <Property Name="FlightLogo" Type="nvarchar" MaxLength="50" />
+    <Property Name="FlightName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblFlightBook">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="TripTypeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblFlightBookDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookID" Type="int" Nullable="false" />
+    <Property Name="FlightScheduleID" Type="int" Nullable="false" />
+    <Property Name="ClassID" Type="int" Nullable="false" />
+    <Property Name="BookingDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblFlightSchedule">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FlightID" Type="int" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="DepartureDateTime" Type="datetime" Nullable="false" />
+    <Property Name="ArrivalDateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblFlightSeats">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FlightID" Type="int" Nullable="false" />
+    <Property Name="ClassID" Type="int" Nullable="false" />
+    <Property Name="NoOfSeat" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblFrequentFlightSchedule">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FlightID" Type="int" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="DepartureTime" Type="datetime" Nullable="false" />
+    <Property Name="ArrivalTime" Type="datetime" Nullable="false" />
+    <Property Name="FlightFrequency" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblPassengerDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BookFlightID" Type="int" Nullable="false" />
+    <Property Name="PassengerType" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblPassengerType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="PassengerType" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblRoute">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Departure" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Arrival" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DepartureShort" Type="nvarchar" MaxLength="50" />
+    <Property Name="ArrivalShort" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblTripType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="TripType" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tblUserInformation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserTypeID" Type="int" Nullable="false" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProfileImage" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblUserType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="UserRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tblFare_tblClass">
+    <End Role="tblClass" Type="Self.tblClass" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblFare" Type="Self.tblFare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblClass">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblFare">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFare_tblFlight">
+    <End Role="tblFlight" Type="Self.tblFlight" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblFare" Type="Self.tblFare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblFlight">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblFare">
+        <PropertyRef Name="FlightID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFare_tblPassengerType">
+    <End Role="tblPassengerType" Type="Self.tblPassengerType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblFare" Type="Self.tblFare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPassengerType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblFare">
+        <PropertyRef Name="PassengerTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFare_tblRoute">
+    <End Role="tblRoute" Type="Self.tblRoute" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblFare" Type="Self.tblFare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRoute">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblFare">
+        <PropertyRef Name="RouteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFlightBook_tblTripType">
+    <End Role="tblTripType" Type="Self.tblTripType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblFlightBook" Type="Self.tblFlightBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblTripType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblFlightBook">
+        <PropertyRef Name="TripTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFlightBookDetail_tblClass">
+    <End Role="tblClass" Type="Self.tblClass" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblFlightBookDetail" Type="Self.tblFlightBookDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblClass">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblFlightBookDetail">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFlightBookDetail_tblFlightBook">
+    <End Role="tblFlightBook" Type="Self.tblFlightBook" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblFlightBookDetail" Type="Self.tblFlightBookDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblFlightBook">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblFlightBookDetail">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFlightBookDetail_tblFlightSchedule">
+    <End Role="tblFlightSchedule" Type="Self.tblFlightSchedule" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblFlightBookDetail" Type="Self.tblFlightBookDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblFlightSchedule">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblFlightBookDetail">
+        <PropertyRef Name="FlightScheduleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFlightSchedule_tblFlight">
+    <End Role="tblFlight" Type="Self.tblFlight" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblFlightSchedule" Type="Self.tblFlightSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblFlight">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblFlightSchedule">
+        <PropertyRef Name="FlightID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFlightSchedule_tblRoute">
+    <End Role="tblRoute" Type="Self.tblRoute" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblFlightSchedule" Type="Self.tblFlightSchedule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRoute">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblFlightSchedule">
+        <PropertyRef Name="RouteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFlightSeats_tblClass">
+    <End Role="tblClass" Type="Self.tblClass" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblFlightSeats" Type="Self.tblFlightSeats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblClass">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblFlightSeats">
+        <PropertyRef Name="ClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblFlightSeats_tblFlight">
+    <End Role="tblFlight" Type="Self.tblFlight" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblFlightSeats" Type="Self.tblFlightSeats" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblFlight">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblFlightSeats">
+        <PropertyRef Name="FlightID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblPassengerDetail_tblFlightBookDetail">
+    <End Role="tblPassengerType" Type="Self.tblPassengerType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblPassengerDetail" Type="Self.tblPassengerDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblPassengerType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblPassengerDetail">
+        <PropertyRef Name="PassengerType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblUserInformation_tblUserType">
+    <End Role="tblUserType" Type="Self.tblUserType" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblUserInformation" Type="Self.tblUserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUserType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tblUserInformation">
+        <PropertyRef Name="UserTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AirlineReservationModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblClass" EntityType="Self.tblClass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFare" EntityType="Self.tblFare" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFlight" EntityType="Self.tblFlight" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFlightBook" EntityType="Self.tblFlightBook" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFlightBookDetail" EntityType="Self.tblFlightBookDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFlightSchedule" EntityType="Self.tblFlightSchedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFlightSeats" EntityType="Self.tblFlightSeats" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblFrequentFlightSchedule" EntityType="Self.tblFrequentFlightSchedule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPassengerDetail" EntityType="Self.tblPassengerDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblPassengerType" EntityType="Self.tblPassengerType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRoute" EntityType="Self.tblRoute" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTripType" EntityType="Self.tblTripType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserInformation" EntityType="Self.tblUserInformation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserType" EntityType="Self.tblUserType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tblFare_tblClass" Association="Self.FK_tblFare_tblClass">
+      <End Role="tblClass" EntitySet="tblClass" />
+      <End Role="tblFare" EntitySet="tblFare" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFare_tblFlight" Association="Self.FK_tblFare_tblFlight">
+      <End Role="tblFlight" EntitySet="tblFlight" />
+      <End Role="tblFare" EntitySet="tblFare" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFare_tblPassengerType" Association="Self.FK_tblFare_tblPassengerType">
+      <End Role="tblPassengerType" EntitySet="tblPassengerType" />
+      <End Role="tblFare" EntitySet="tblFare" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFare_tblRoute" Association="Self.FK_tblFare_tblRoute">
+      <End Role="tblRoute" EntitySet="tblRoute" />
+      <End Role="tblFare" EntitySet="tblFare" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFlightBook_tblTripType" Association="Self.FK_tblFlightBook_tblTripType">
+      <End Role="tblTripType" EntitySet="tblTripType" />
+      <End Role="tblFlightBook" EntitySet="tblFlightBook" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFlightBookDetail_tblClass" Association="Self.FK_tblFlightBookDetail_tblClass">
+      <End Role="tblClass" EntitySet="tblClass" />
+      <End Role="tblFlightBookDetail" EntitySet="tblFlightBookDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFlightBookDetail_tblFlightBook" Association="Self.FK_tblFlightBookDetail_tblFlightBook">
+      <End Role="tblFlightBook" EntitySet="tblFlightBook" />
+      <End Role="tblFlightBookDetail" EntitySet="tblFlightBookDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFlightBookDetail_tblFlightSchedule" Association="Self.FK_tblFlightBookDetail_tblFlightSchedule">
+      <End Role="tblFlightSchedule" EntitySet="tblFlightSchedule" />
+      <End Role="tblFlightBookDetail" EntitySet="tblFlightBookDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFlightSchedule_tblFlight" Association="Self.FK_tblFlightSchedule_tblFlight">
+      <End Role="tblFlight" EntitySet="tblFlight" />
+      <End Role="tblFlightSchedule" EntitySet="tblFlightSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFlightSchedule_tblRoute" Association="Self.FK_tblFlightSchedule_tblRoute">
+      <End Role="tblRoute" EntitySet="tblRoute" />
+      <End Role="tblFlightSchedule" EntitySet="tblFlightSchedule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFlightSeats_tblClass" Association="Self.FK_tblFlightSeats_tblClass">
+      <End Role="tblClass" EntitySet="tblClass" />
+      <End Role="tblFlightSeats" EntitySet="tblFlightSeats" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblFlightSeats_tblFlight" Association="Self.FK_tblFlightSeats_tblFlight">
+      <End Role="tblFlight" EntitySet="tblFlight" />
+      <End Role="tblFlightSeats" EntitySet="tblFlightSeats" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblPassengerDetail_tblFlightBookDetail" Association="Self.FK_tblPassengerDetail_tblFlightBookDetail">
+      <End Role="tblPassengerType" EntitySet="tblPassengerType" />
+      <End Role="tblPassengerDetail" EntitySet="tblPassengerDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblUserInformation_tblUserType" Association="Self.FK_tblUserInformation_tblUserType">
+      <End Role="tblUserType" EntitySet="tblUserType" />
+      <End Role="tblUserInformation" EntitySet="tblUserInformation" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,139 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+  <section class="dashboard-counts no-padding-bottom">
+        <div class="container-fluid">
+             @if (ViewBag.data != null){
+                    <div id="main-alert" class="alerts">
+                        <div class="alert alert-warning">
+                            <p><b>Items running out of stock:</b></p> 
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th style="color:black">Product Name</th>
+                                            <th style="color:darkblue">Quantity Remaining</th>                                                
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in ViewBag.data)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @item.ProductName
+                                                </td>
+                                                
+                                                <td class="pull-right">
+                                                    @item.QuantityRemaining
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>                                
+                        </div>
+                    </div>
+             }
+            <div class="row bg-white has-shadow">
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6">
+                    <div class="item d-flex align-items-center">
+                        <div class="icon bg-violet"><i class="fa fa-plane"></i></div>
+                        <div class="title">
+                            <span>Available<br>Flights</span>
+                            <div class="progress">
+                                <div role="progressbar" style="width: 48%; height: 4px;" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-violet"></div>
+                            </div>
+                        </div>
+                        <div class="number"><strong>@ViewBag.flight</strong><br><small></small></div>
+                    </div>
+                </div>
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6">
+                    <div class="item d-flex align-items-center">
+                        <div class="icon bg-red"><i class="fa fa-road"></i></div>
+                        <div class="title">
+                            <span>Available<br>Routes</span>
+                            <div class="progress">
+                                <div role="progressbar" style="width: 70%; height: 4px;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red"></div>
+                            </div>
+                        </div>
+                        <div class="number"><strong>@ViewBag.Route</strong><br><small></small></div>
+                    </div>
+                </div>
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6">
+                    <div class="item d-flex align-items-center">
+                        <div class="icon bg-green"><i class="fa fa-book"></i></div>
+                        <div class="title">
+                            <span>Available<br>Flight Schedules</span>
+                            <div class="progress">
+                                <div role="progressbar" style="width: 40%; height: 4px;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-green"></div>
+                            </div>
+                        </div>
+                        <div class="number"><strong>@ViewBag.Schedules</strong><br><small></small></div>
+                    </div>
+                </div>
+                <!-- Item -->
+                <div class="col-xl-3 col-sm-6">
+                    <div class="item d-flex align-items-center">
+                        <div class="icon bg-orange"><i class="icon-check"></i></div>
+                        <div class="title">
+                            <span>Total Booking<br></span>
+                            <div class="progress">
+                                <div role="progressbar" style="width: 50%; height: 4px;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-orange"></div>
+                            </div>
+                        </div>
+                        <div class="number"><strong>13</strong><br><small></small></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Dashboard Header Section    -->
+    <section class="dashboard-header">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Statistics -->
+                <div class="statistics col-lg-4 col-12">
+                    <div class="statistic d-flex align-items-center bg-white has-shadow">
+                        <div class="icon bg-red"><i class="fa fa-tasks"></i></div>
+                        <div class="text"><strong>10</strong><br><small>Total Users</small></div>
+                    </div>
+                    <div class="statistic d-flex align-items-center bg-white has-shadow">
+                        <div class="icon bg-green"><i class="fa fa-calendar-o"></i></div>
+                        <div class="text"><strong>60</strong><br><small>Total Seat</small></div>
+                    </div>
+                    <div class="statistic d-flex align-items-center bg-white has-shadow">
+                        <div class="icon bg-orange"><i class="fa fa-paper-plane-o"></i></div>
+                        <div class="text"><strong>3</strong><br><small>TotalClass </small></div>
+                    </div>
+                </div>
+                <!-- Line Chart            -->
+                <div class="col-lg-4 col-12">
+                    @*<div class="overdue card">
+                        <div class="card-body">
+                            <h3>Total Sales</h3><small>Total sales of the company</small>
+                            <div class="number text-center">$20,000</div>
+                            <div class="chart">
+                                <canvas id="lineChart1">                               </canvas>
+                            </div>
+                        </div>
+                    </div>*@
+                </div>
+                @*<div class="chart col-lg-4 col-12">
+                    <!-- Bar Chart   -->
+                    <div class="bar-chart has-shadow bg-white">
+                        <div class="title"><strong class="text-violet">95%</strong><br><small>Sales Overview</small></div>
+                        <canvas id="barChartHome"></canvas>
+                    </div>
+                    <!-- Numbers-->
+                    <div class="statistic d-flex align-items-center bg-white has-shadow">
+                        <div class="icon bg-green"><i class="fa fa-line-chart"></i></div>
+                        <div class="text"><strong>76%</strong><br><small>Sales Rate</small></div>
+                    </div>
+                </div>*@
+            </div>
+        </div>
+    </section>
+

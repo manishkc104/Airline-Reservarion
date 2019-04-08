@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
+}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="contact-page__map" style="margin-left:-220px;">
+                    <div data-latlong="27.7090, 85.3252"></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-1">
+                <div class="contact-page__form">
+                    <div class="title">
+                        <span>We would like to know you</span>
+                        <h2>CONTACT US</h2>
+                    </div>
+                    <div class="descriptions">
+                        <p>For futher queries and information please contact us</p>
+                    </div>
+                    <form class="contact-form" action="/Home/SendMesage" method="post">
+                        <div class="form-item">
+                            <input type="text" value="Your Name *" autocomplete="off" name="name" required>
+                        </div>
+                        <div class="form-item">
+                            <input type="email" value="Your Email *" autocomplete="off" name="email" required>
+                        </div>
+                        <div class="form-item">
+                            <input type="text" value="Subject" autocomplete="off" name="subject" required>
+                        </div>                      
+                        <div class="form-textarea-wrapper">
+                            <textarea name="message" autocomplete="off" required>Message</textarea>
+                        </div>
+                        <div class="form-actions">
+                            <input type="submit" value="Send" class="submit-contact">
+                        </div>
+                        <div id="contact-content"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

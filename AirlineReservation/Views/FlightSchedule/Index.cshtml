@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Entities.tblFlightSchedule>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/datetime/jquery.datetimepicker.full.js"></script>
+<link href="~/Content/jquery.datetimepicker.min.css" rel="stylesheet" />
+
+<div class="page">
+    <div class="page-content d-flex align-items-stretch">
+        <div class="col-lg-12">
+            <section class="tables">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header d-flex align-items-center">
+                                    <h3 class="h4">@Html.ActionLink("Add New Schedule", "Create")</h3>
+                                </div>
+                                <div style="float:left;display:block;">
+                                    Departure Date:<input id="txtDate" name="txtDate" type="text" value="@ViewBag.DepartureDate" />
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        Flight Number
+                                                    </th>
+                                                    <th>
+                                                        Route
+                                                    </th>
+                                                    <th>
+                                                        Departure
+                                                    </th>
+                                                    <th>
+                                                        Arrival
+                                                    </th>
+                                                    <th>
+                                                        Action
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model)
+                                                {
+                                                    //var item = Model.ToList()[i];
+                                                    <tr>
+
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.tblFlight.FlightNo)
+                                                        </td>
+                                                        <td>
+                                                            @(item.tblRoute.Departure + "-" + item.tblRoute.Arrival)
+                                                        </td>
+                                                        <td>
+                                                            @(item.DepartureDateTime)
+                                                        </td>
+                                                        <td>
+                                                            @(item.ArrivalDateTime)
+                                                        </td>
+                                                        <td>
+                                                            <a href='@Url.Action("Edit", "FlightSchedule" , new { id = item.ID })' class="btn btn-info">Edit</a>
+                                                            <a href='@Url.Action("Delete", "FlightSchedule" , new { id = item.ID })' class="btn btn-danger">Delete</a>
+
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function (e) {
+        $("#txtDate").datetimepicker({
+            timepicker: false,
+            format: 'm/d/Y'
+        });
+
+        $("#txtDate").change(function (e) {
+            window.location.href = "/FlightSchedule/Index?departure=" + $(this).val();
+        });
+    });
+</script>
+@*<button title="edit" class="edit btn btn-default" data-primary="ScheduleItemID:15;"><span class="glyphicon glyphicon-pencil"></span></button>*@

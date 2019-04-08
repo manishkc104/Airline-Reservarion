@@ -1,0 +1,26 @@
+﻿@model AirlineReservation.Models.RegisterUserViewModel
+@{
+    ViewBag.Title = "TroubleLogin";
+
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="login-page">
+    <div class="form">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            <input type="text" name="email" autocomplete="off" class="form-control" placeholder="Email Address">
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            <button>Submit</button>
+            <p class="message"><a href="~/Account/Login">Login</a></p>
+        }
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

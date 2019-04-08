@@ -1,0 +1,69 @@
+﻿@model AirlineReservation.Models.LoginViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+
+<div class="login-page">
+    <div class="form">        
+        @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "login-form" }))
+        {
+
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+            <button>login</button>
+            <p class="message"><a href="~/Login/TroubleLogin">Trouble Logging in?</a></p>
+        }
+    </div>
+</div>
+
+
+
+@*<div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">Login</h4>
+                </div>
+                <div class="content">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-info btn-fill pull-right">Login</button>
+                        <div class="clearfix"></div>
+                        <a href="#">Trouble Login?</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

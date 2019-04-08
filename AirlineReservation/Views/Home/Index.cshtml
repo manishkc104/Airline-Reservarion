@@ -1,0 +1,405 @@
+﻿@model AirlineReservation.Models.BackOffice.DestinationViewModel
+@{
+    Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
+}
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+    <div id="slider-revolution">
+        <ul>
+            <li data-slotamount="7" data-masterspeed="500" data-title="Slide title 2">
+                <img src="~/Content/WebsiteContent/images/bg/2.jpg" data-bgposition="left center" data-duration="14000" data-bgpositionend="right center" alt="">
+
+                <div class="tp-caption  sft fadeout slider-caption-sub slider-caption-sub-2" data-x="center" data-y="220" data-speed="700" data-start="1500" data-easing="easeOutBack">
+                    Check out our exclusive packages
+                </div>
+
+                <div class="tp-caption sft fadeout slider-caption slider-caption-2" data-x="center" data-y="260" data-speed="700" data-easing="easeOutBack" data-start="2000">
+                    Book with us
+                </div>
+
+                <a href="#" class="tp-caption sft fadeout awe-btn awe-btn-style3 awe-btn-slider" data-x="center" data-y="370" data-easing="easeOutBack" data-speed="700" data-start="2200">Book now</a>
+            </li>
+
+            <li data-slotamount="7" data-masterspeed="500" data-title="Slide title 3">
+                <img src="~/Content/WebsiteContent/images/bg/4.jpg" data-bgposition="left center" data-duration="14000" data-bgpositionend="right center" alt="">
+
+                <div class="tp-caption lfl fadeout slider-caption slider-caption-3" data-x="center" data-y="260" data-speed="700" data-easing="easeOutBack" data-start="1500">
+                    ARS Reservation
+                </div>
+
+                <div href="#" class="tp-caption lfr fadeout slider-caption-sub slider-caption-sub-3" data-x="center" data-y="365" data-easing="easeOutBack" data-speed="700" data-start="2000"> Guide you book your destination</div>
+            </li>
+
+        </ul>
+    </div>
+</section>
+
+<!-- SEARCH TABS -->
+<section>
+    <div class="container">
+        <div class="awe-search-tabs tabs">
+            <ul>
+                <li>
+                    <a href="#tab-flight">
+                        <i class="awe-icon awe-icon-plane"></i>
+                    </a>
+                </li>
+
+            </ul>
+            <div class="awe-search-tabs__content tabs__content">
+                <div id="tab-flight" class="search-flight">
+                    <h2>Search Flight</h2>
+                    <form action="/SearchFlight/Search" method="post">
+                        <div class="form-group">
+                            <div class="form-elements">
+                                <label>From</label>
+                                <div class="form-item">
+                                    <i class="awe-icon awe-icon-marker-1"></i>
+                                    <input id="From" name="From" type="text" value="" placeholder="From" required autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-elements">
+                                <label>To</label>
+                                <div class="form-item">
+                                    <i class="awe-icon awe-icon-marker-1"></i>
+                                    <input id="To" name="To" type="text" value="" placeholder="To" required autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-elements">
+                                <label>Depart on</label>
+                                <div class="form-item">
+                                    <i class="awe-icon awe-icon-calendar"></i>
+                                    <input id="Depart" name="Depart" type="text" class="awe-calendar" value="" required placeholder="Check In" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-elements" id="fldReturn">
+                                <label>Return on</label>
+                                <div class="form-item">
+                                    <i class="awe-icon awe-icon-calendar"></i>
+                                    <input id="Return" name="Return" type="text" class="awe-calendar" value="" placeholder="Check out" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="form-elements">
+                                <label>Adult</label>
+                                <div class="form-item">
+                                    <select class="awe-select" name="Adult" required autocomplete="off">
+                                        <option value="">Select..</option>
+                                        @for (int i = 1; i <= 10; i++)
+                                        {
+                                            <option value="@i">@i</option>
+                                        }
+                                    </select>
+                                </div>
+                                <span>12 yo and above</span>
+                            </div>
+                            <div class="form-elements">
+                                <label>Childs</label>
+                                <div class="form-item">
+                                    <select class="awe-select" name="Child" autocomplete="off">
+                                        <option value="">
+                                            Select..
+                                        </option>
+                                        @for (int i = 1; i <= 10; i++)
+                                        {
+                                            <option value="@i">@i</option>
+                                        }
+                                    </select>
+                                </div>
+                                <span>0-11 yo</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-elements">
+                                <label>Trip</label>
+                                <div class="form-item">
+                                    <select class="awe-select" name="FlightType" id="FlightType" required autocomplete="off">
+                                        <option value="">Select..</option>
+                                        <option value="1">One Way</option>
+                                        <option value="2">Round Trip</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <input type="submit" value="Find My Flight">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="container">
+            <div class="awe-search-tabs tabs">
+                <ul>
+                    <li>
+                        <a href="#tab-flight">
+                            <i class="awe-icon awe-icon-plane"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#tab-destination">
+                            <i class="awe-icon awe-icon-hotel"></i>
+
+                        </a>
+                    </li>
+
+                </ul>
+                <div class="awe-search-tabs__content tabs__content">
+                    <div id="tab-flight" class="search-flight">
+                        <h2>Search Flight</h2>
+                        <form action="/SearchFlight/Search" method="post">
+                            <div class="form-group">
+                                <div class="form-elements">
+                                    <label>From</label>
+                                    <div class="form-item">
+                                        <i class="awe-icon awe-icon-marker-1"></i>
+                                        <input id="From" name="From" type="text" value="" placeholder="From">
+                                    </div>
+                                </div>
+                                <div class="form-elements">
+                                    <label>To</label>
+                                    <div class="form-item">
+                                        <i class="awe-icon awe-icon-marker-1"></i>
+                                        <input id="To" name="To" type="text" value="" placeholder="To">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-elements">
+                                    <label>Depart on</label>
+                                    <div class="form-item">
+                                        <i class="awe-icon awe-icon-calendar"></i>
+                                        <input id="Depart" name="Depart" type="text" class="awe-calendar" value="" placeholder="Check In">
+                                    </div>
+                                </div>
+                                <div class="form-elements" id="fldReturn">
+                                    <label>Return on</label>
+                                    <div class="form-item">
+                                        <i class="awe-icon awe-icon-calendar"></i>
+                                        <input id="Return" name="Return" type="text" class="awe-calendar" value="" placeholder="Check out">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-elements">
+                                    <label>Adult</label>
+                                    <div class="form-item">
+                                        <select class="awe-select" name="Adult">
+                                            @for (int i = 1; i <= 10; i++)
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <span>12 yo and above</span>
+                                </div>
+                                <div class="form-elements">
+                                    <label>Childs</label>
+                                    <div class="form-item">
+                                        <select class="awe-select" name="Child">
+                                            @for (int i = 1; i <= 10; i++)
+                                            {
+                                                <option value="@i">@i</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <span>0-11 yo</span>
+                                </div>
+                                <div class="form-elements">
+                                    <label>Trip</label>
+                                    <div class="form-item">
+                                        <select class="awe-select" name="FlightType" id="FlightType">
+                                            <option value="">Select..</option>
+                                            <option value="1">One Way</option>
+                                            <option value="2">Round Trip</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <input type="submit" value="Find My Flight">
+                            </div>
+                        </form>
+                    </div>
+                    <div id="tab-destination" class="search-hotel">
+                        <h2>Where would you like to go?</h2>
+                        <form>
+                            <div class="form-group">
+                                <div class="form-elements">
+                                    <label>Destinations</label>
+                                    <div class="form-item">
+                                        <i class="awe-icon awe-icon-marker-1"></i>
+                                        <input type="text" value="Country, city, airport...">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-elements">
+                                    <label>Check in</label>
+                                    <div class="form-item">
+                                        <i class="awe-icon awe-icon-calendar"></i>
+                                        <input type="text" class="awe-calendar" value="Date">
+                                    </div>
+                                </div>
+                                <div class="form-elements">
+                                    <label>Check out</label>
+                                    <div class="form-item">
+                                        <i class="awe-icon awe-icon-calendar"></i>
+                                        <input type="text" class="awe-calendar" value="Date">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-elements">
+                                    <label>Guest</label>
+                                    <div class="form-item">
+                                        <select class="awe-select">
+                                            <option>All types</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <input type="submit" value="Find My Hotel">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+</section>
+<section class="masonry-section-demo">
+    <div class="container">
+        <div class="destination-grid-content">
+            <div class="section-title">
+                <h3 class="h1">Destinations</a> are waiting</h3>
+            </div>
+            <div class="row">
+                <div class="awe-masonry">
+                    <!-- GALLERY ITEM -->
+
+                    <div class="awe-masonry__item">
+                        <a href="trip-detail.html">
+                            <div class="image-wrap image-cover">
+                                <img src="~/Content/WebsiteContent/images/img/9.jpg" alt="">
+                            </div>
+                        </a>
+                        <div class="item-title">
+                            <h2 class="front-title"><a href="~/Home/ChitwanDestination">Chitwan</a></h2>
+                            <div class="item-cat">
+                                <ul>
+                                    <li><a>Chitwan</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- END / GALLERY ITEM -->
+                    <!-- GALLERY ITEM -->
+                    <div class="awe-masonry__item">
+                        <a href="trip-detail.html">
+                            <div class="image-wrap image-cover">
+                                <img src="~/Content/WebsiteContent/images/img/10.jpg" alt="">
+                            </div>
+                        </a>
+                        <div class="item-title">
+                            <h2 class="front-title"><a href="~/Home/Bardiya">Splendor of Bardia</a></h2>
+                            <div class="item-cat">
+                                <ul>
+                                    <li><a href="">Bardia</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END / GALLERY ITEM -->
+                    <!-- GALLERY ITEM -->
+                    <div class="awe-masonry__item">
+                        <a href="trip-detail.html">
+                            <div class="image-wrap image-cover">
+                                <img src="~/Content/WebsiteContent/images/img/12.jpg" alt="">
+                            </div>
+                        </a>
+                        <div class="item-title">
+                            <h2 class="front-title"><a href="~/Home/Kathmandu">Adventure of Kathmandu</a></h2>
+                            <div class="item-cat">
+                                <ul>
+                                    <li><a href="">Kathmandu</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END / GALLERY ITEM -->
+                    <!-- GALLERY ITEM -->
+                    <div class="awe-masonry__item">
+                        <a href="trip-detail.html">
+                            <div class="image-wrap image-cover">
+                                <img src="~/Content/WebsiteContent/images/img/11.jpg" alt="">
+                            </div>
+                        </a>
+                        <div class="item-title">
+                            <h2 class="front-title"><a href="~/Home/Pokhara">Beauty of Pokhara </a></h2>
+                            <div class="item-cat">
+                                <ul>
+                                    <li><a href="">Pokhara</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- END / GALLERY ITEM -->
+                    <!-- GALLERY ITEM -->
+                    <div class="awe-masonry__item">
+                        <a href="trip-detail.html">
+                            <div class="image-wrap image-cover">
+                                <img src="~/Content/WebsiteContent/images/img/13.jpg" alt="">
+                            </div>
+                        </a>
+                        <div class="item-title">
+                            <h2 class="front-title"><a href="~/Home/Lumbini">Lumbini</a></h2>
+                            <div class="item-cat">
+                                <ul>
+                                    <li><a href="">Lumbini</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END / SEARCH TABS -->
+
+<script>
+    $(document).ready(function (e) {
+        EnableDisableTrip();
+
+        $('#FlightType').change(function (e) {
+            EnableDisableTrip();
+        });
+    });
+
+    var EnableDisableTrip = function (e) {
+        if ($('#FlightType').val() == "1") {
+            //$('#Return').attr("disabled", "disabled");
+            $("#fldReturn").hide();
+
+            $('#Return').removeProp("required");
+        }
+        else {
+            //$('#Return').removeAttr("disabled");
+            $("#fldReturn").show();
+            $('#Return').prop('required', true);
+        }
+    };
+</script>

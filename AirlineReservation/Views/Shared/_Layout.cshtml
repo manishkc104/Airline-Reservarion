@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ARS| Home</title>
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Content/css")
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="../../Static/vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="../../Static/vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="../../Static/css/fontastic.css">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="../../Static/css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="../../Static/css/custom.css">
+    <link href="~/Static/css/pagination.css" rel="stylesheet" />
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="../../Static/img/favicon.ico">
+
+    <!-- Tweaks for older IEs-->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+
+    <script src="~/Static/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Static/vendor/popper.js/umd/popper.min.js"></script>
+    <script src="~/Static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Static/vendor/jquery.cookie/jquery.cookie.js"></script>
+    <script src="~/Static/vendor/chart.js/Chart.min.js"></script>
+    <script src="~/Static/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="~/Static/js/charts-home.js"></script>
+    <!-- Main File-->
+    <script src="~/Static/js/front.js"></script>
+</head>
+<body>
+    <div class="page">
+        <!-- Main Navbar-->
+        <header class="header">
+            <nav class="navbar">
+                <!-- Search Box-->
+                <div class="search-box">
+                    <button class="dismiss"><i class="icon-close"></i></button>
+                    <form id="searchForm" action="#" role="search">
+                        <input type="search" placeholder="What are you looking for..." class="form-control">
+                    </form>
+                </div>
+                <div class="container-fluid">
+                    <div class="navbar-holder d-flex align-items-center justify-content-between">
+                        <!-- Navbar Header-->
+                        <div class="navbar-header">
+                            <!-- Navbar Brand --><a href="~/home" class="navbar-brand">
+                                <div class="brand-text brand-big"><span>Airline</span><strong>Reservation</strong></div>
+                                <div class="brand-text brand-small"><strong>ARS</strong></div>
+                            </a>
+                            <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+                        </div>
+                        <!-- Navbar Menu -->
+                        <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                            <!-- Search-->
+                            <li class="nav-item d-flex align-items-center"><a id="search" href="#"><i class="icon-search"></i></a></li>
+                            <!-- Logout    -->
+                            <li class="nav-item"><a href="~/home/authentication" class="nav-link logout">Logout<i class="fa fa-sign-out"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="page-content d-flex align-items-stretch">
+            <!-- Side Navbar -->
+            <nav class="side-navbar">
+                <div class="sidebar-header d-flex align-items-center">
+                 
+                    <div class="avatar"><img src="~/Static/Images/logo.png" alt="..." class="img-fluid rounded-circle"></div>
+                    <div class="title">
+                        <h1 class="h4">Admin Panel</h1>
+                        <p></p>
+                    </div>
+                </div>
+                <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
+                                                <ul class="list-unstyled">
+                                                    <li id="li-dashboard"><a href="~/Dashboard"> <i class="fa fa-home"></i>Home </a></li>
+                                                    <li id="li-flight"><a href="~/Flight"> <i class="fa fa-plane"></i>Flight</a></li>
+                                                    <li id="li-route"><a href="~/Route"> <i class="fa fa-road"></i>Route</a></li>
+                                                    <li id="li-fare"><a href="~/FlightFare"><i class="fa fa-money"></i>Flight Fare</a></li>
+                                                    <li id="li-seat"><a href="~/FlightSeat"> <i class="fa fa-gift"></i>Flight Seat</a></li>
+                                                    <li id="li-schedule"><a href="~/FlightSchedule"> <i class="fa fa-reply"></i>Flight Schedule</a></li>
+                                                    <li id="li-schedule"><a href="~/Booking"> <i class="fa fa-reply"></i>Booking</a></li>
+                                                    @if (Request.IsAuthenticated)
+    {
+        if (User.IsInRole(1.ToString()))
+        {
+                                                <li id="li-users"><a href="~/User"> <i class="fa fa-user-plus"></i>Users</a></li>
+}
+}
+
+                                                </ul>
+            </nav>
+            <div class="content-inner">
+                <!-- Page Header-->
+                <header class="page-header">
+                    <div class="container-fluid">
+                        <h2 class="no-margin-bottom">@ViewBag.Title</h2>
+                    </div>
+                </header>
+
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                @RenderBody()
+                <footer class="main-footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>&copy; 2018. All rights reserved.</p>
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <p>Engineered By <a href="http://kathmandu.codes" class="external">Manish KC</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+  
+    <!-- JavaScript files-->
+    <script>
+    $(document).ready(function (e) {
+
+        var currentPage = "@ViewBag.Title";
+
+        var element;
+        switch (currentPage){
+            case "Overview":
+                element = document.getElementById("li-dashboard")
+                element.className += ("active");
+                break;
+            case "Products":
+                element = document.getElementById("li-products")
+                element.className += ("active");
+                break;
+            case "Categories":
+                element = document.getElementById("li-categories")
+                element.className += ("active");
+                break;
+            case "Suppliers":
+                element = document.getElementById("li-suppliers")
+                element.className += ("active");
+                element_all = document.getElementById("li-suppliers-all")
+                element_all.className += ("active");
+                break;
+            case "Supplier Details":
+                element = document.getElementById("li-supplier-details")
+                element.className += ("active");
+                element_all = document.getElementById("li-suppliers-all")
+                element_all.className += ("active");
+                break;
+            case "Product Type Supplier":
+                element = document.getElementById("li-product-type-supplier")
+                element.className += ("active");
+                element_all = document.getElementById("li-suppliers-all")
+                element_all.className += ("active");
+                break;
+            case "Stock":
+                element = document.getElementById("li-stock")
+                element.className += ("active");
+                break;
+            case "Billing":
+                element = document.getElementById("li-billing")
+                element.className += ("active");
+                break;
+            case "Product Sales":
+                element = document.getElementById("li-product-sales")
+                element.className += ("active");
+                break;
+            case "Customers":
+                element = document.getElementById("li-customers")
+                element.className += ("active");
+                element_all = document.getElementById("li-customers-all")
+                element_all.className += ("active");
+                break;
+            case "Customer Details":
+                element = document.getElementById("li-customer-details")
+                element.className += ("active");
+                element_all = document.getElementById("li-customers-all")
+                element_all.className += ("active");
+                break;
+            case "Users":
+                element = document.getElementById("li-users")
+                element.className += ("active");
+                break;
+            case "Profile":
+                element = document.getElementById("li-profile")
+                element.className += ("active");
+                break;
+            default:
+                break;
+        }
+
+
+    });
+    </script>
+
+
+</body>
+</html>
